@@ -104,33 +104,10 @@ class _MyAppState extends State<MyApp> {
       ),
     ];
   }
-
-  List<Widget> getOpenAppSettingsPanelActions() {
-    return [
-      ListTile(
-        title: const Text('Wifi'),
-        minVerticalPadding: 5.0,
-        onTap: () => AppSettings.openAppSettingsPanel(AppSettingsPanelType.wifi),
-      ),
-      ListTile(
-        title: const Text('NFC'),
-        onTap: () => AppSettings.openAppSettingsPanel(AppSettingsPanelType.nfc),
-      ),
-      ListTile(
-        title: const Text('Internet connectivity'),
-        onTap: () => AppSettings.openAppSettingsPanel(AppSettingsPanelType.internetConnectivity),
-      ),
-      ListTile(
-        title: const Text('Volume'),
-        onTap: () => AppSettings.openAppSettingsPanel(AppSettingsPanelType.volume),
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     final appSettingsActions = getOpenAppSettingsActions();
-    final appSettingsPanelActions = getOpenAppSettingsPanelActions();
+
 
     return MaterialApp(
       home: Scaffold(
@@ -151,18 +128,7 @@ class _MyAppState extends State<MyApp> {
             SliverList(
               delegate: SliverChildListDelegate.fixed(appSettingsActions),
             ),
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'openAppSettingsPanel() options',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate.fixed(appSettingsPanelActions),
-            ),
+
           ],
         ),
       ),
